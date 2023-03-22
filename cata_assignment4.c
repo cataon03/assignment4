@@ -1,3 +1,10 @@
+/*
+Catalina Ocampo
+COP3502C
+Professor Torosdagli
+
+*/
+
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -5,8 +12,7 @@
 
 int extraMemoryAllocated;
 
-// implement merge sort
-// extraMemoryAllocated counts bytes of extra memory allocated
+
 void mergeSort(int pData[], int l, int r)
 {
 	int m = (l+r)/2;
@@ -69,8 +75,6 @@ void mergeSort(int pData[], int l, int r)
 }
 
 
-// implement insertion sort
-// extraMemoryAllocated counts bytes of memory allocated
 void insertionSort(int* pData, int n)
 {
     int temp = 0;
@@ -91,8 +95,6 @@ void insertionSort(int* pData, int n)
     }	
 }
 
-// implement bubble sort
-// extraMemoryAllocated counts bytes of extra memory allocated
 void bubbleSort(int* pData, int n)
 {
     int temp = 0;
@@ -110,8 +112,7 @@ void bubbleSort(int* pData, int n)
     }	
 }
 
-// implement selection sort
-// extraMemoryAllocated counts bytes of extra memory allocated
+
 void selectionSort(int* pData, int n)
 {
 	int temp = 0;
