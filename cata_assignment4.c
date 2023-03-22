@@ -12,61 +12,61 @@ void mergeSort(int pData[], int l, int r)
 	int m = (l+r)/2;
 
     if (l < r) {
-        // Same as (l+r)/2, but avoids overflow for
-        // large l and h
-        int m = l + (r - l) / 2;
-  
-        // Sort first and second halves
+        int m = (l + r) / 2;
+
         mergeSort(pData, l, m);
         mergeSort(pData, m + 1, r);
   
        	int i, j, k;
 		int n1 = m - l + 1;
 		int n2 = r - m;
-	
-		/* create temp arrays */
-		int L[n1], R[n2];
-	
-		/* Copy data to temp arrays L[] and R[] */
+		
+		int *L = (int*) malloc(n1*sizeof(int));
+		int *R = (int*) malloc(n2*sizeof(int));
+
+		extraMemoryAllocated += (n1 * sizeof(L)) + (n2 *sizeof(R));
+
 		for (i = 0; i < n1; i++)
 			L[i] = pData[l + i];
 		for (j = 0; j < n2; j++)
-			R[j] = pData[m + 1 + j];
-	
-		/* Merge the temp arrays back into arr[l..r]*/
-		i = 0; // Initial index of first subarray
-		j = 0; // Initial index of second subarray
-		k = l; // Initial index of merged subarray
-		while (i < n1 && j < n2) {
-			if (L[i] <= R[j]) {
+			R[j] = pData[m + 1+ j];
+		
+		i = 0; 
+		j = 0;
+		k = l; 
+		
+		while (i < n1 && j < n2)
+		{
+			if (L[i] <= R[j])
+			{
 				pData[k] = L[i];
 				i++;
 			}
-			else {
+			else
+			{
 				pData[k] = R[j];
 				j++;
 			}
 			k++;
 		}
 	
-		/* Copy the remaining elements of L[], if there
-		are any */
-		while (i < n1) {
+		while (i < n1)
+		{
 			pData[k] = L[i];
 			i++;
 			k++;
 		}
-	
-		/* Copy the remaining elements of R[], if there
-		are any */
-		while (j < n2) {
+		
+		while (j < n2)
+		{
 			pData[k] = R[j];
 			j++;
 			k++;
 		}
+		free(L);
+		free(R);
 	}
 }
-
 
 
 // implement insertion sort
@@ -151,12 +151,12 @@ int parseData(char *inputFileName, int **ppData)
 
 		if(ppData==NULL)
 		{
-			printf("Memory Allocation Failed.");
+			printf("DMA FAILED.");
 		}
 		// Implement parse data block
         for(int i=0; i<dataSz; i++)
 		{
-            fscanf(inFile, "%d", &((*ppData)[i])); //scans improperly
+            fscanf(inFile, "%d", &((*ppData)[i])); 
         }
 	}	
 
